@@ -8,8 +8,6 @@
     <artifactId>widget</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -57,6 +55,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>${flyway.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -69,6 +72,36 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>5.1.4</version>
+                <configuration>
+                    <driver>com.mysql.jdbc.Driver</driver>
+                    <url>jdbc:mysql://localhost:3306/widget</url>
+                    <user>carjam</user>
+                    <password>password</password>
+                    <schemas>
+                        <schema>widget</schema>
+                    </schemas>
+                    <locations>
+                        <location>classpath:db.migration</location>
+                        <!--<location>filesystem:/Users/jamescarson/workspace/widget/src/main/resources/db.migration</location>-->
+                    </locations>
+                    <sqlMigrationPrefix>V</sqlMigrationPrefix>
+                    <repeatableSqlMigrationPrefix>RRR</repeatableSqlMigrationPrefix>
+                    <sqlMigrationSeparator>__</sqlMigrationSeparator>
+                    <sqlMigrationSuffixes>
+                        <sqlMigrationSuffix>.sql</sqlMigrationSuffix>
+                        <sqlMigrationSuffix>.pkg</sqlMigrationSuffix>
+                        <sqlMigrationSuffix>.pkb</sqlMigrationSuffix>
+                    </sqlMigrationSuffixes>
+                    <encoding>ISO-8859-1</encoding>
+                    <workingDirectory>/Users/jamescarson/workspace/widget</workingDirectory>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
