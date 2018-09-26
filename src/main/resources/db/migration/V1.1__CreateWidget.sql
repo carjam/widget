@@ -1,13 +1,3 @@
--- steps to get here:
--- mysql -u root
--- > CREATE USER 'carjam'@'localhost' IDENTIFIED BY 'password'
--- > GRANT ALL PRIVILEGES ON * . * TO 'carjam';
--- > FLUSH PRIVILEGES;
--- > CREATE DATABASE widget;
--- > GRANT ALL  ON widget TO carjam ;
--- > GRANT ALL PRIVILEGES ON `widget`.* TO 'carjam'@'localhost';
--- from /widget directory > mvn compile flyway:migrate
-
 USE widget;
 
 CREATE TABLE widget (

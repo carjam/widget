@@ -1,3 +1,5 @@
+-- admittedly defeats much of the purpose of using migrations, but potentially useful in POC context
+
 TRUNCATE TABLE widget;
 
 INSERT INTO widget(name)
