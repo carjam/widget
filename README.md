@@ -6,11 +6,12 @@ steps to get here:
 ```
 mysql -u root
  > CREATE USER 'carjam'@'localhost' IDENTIFIED BY 'password'
- > GRANT ALL PRIVILEGES ON * . * TO 'carjam';
+ > GRANT ALL PRIVILEGES ON *.* TO 'carjam'@'localhost';
  > FLUSH PRIVILEGES;
  > CREATE DATABASE widget;
- > GRANT ALL  ON widget TO carjam ;
+ > GRANT ALL ON widget TO carjam@localhost ;
  > GRANT ALL PRIVILEGES ON `widget`.* TO 'carjam'@'localhost';
+ > ALTER USER 'carjam'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
 ```
 
 create tables & data:
@@ -22,7 +23,7 @@ Build:
 ```
  run MainApplicationClass and flyway will automatically run:
  ```
- > mvn exec:java -Dexec.mainClass=com.companyx.widget.MainApplicationClass
+ > mvn spring-boot:run
  ```
  verify running at http://localhost:8080/Widget/1
 
