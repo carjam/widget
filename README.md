@@ -14,7 +14,12 @@ mysql -u root
 ```
 
 create tables & data:
- build
+Install Maven: https://maven.apache.org/install.html
+Follow directions to assure JAVA_HOME and the maven bin directory are in your path.
+Build: 
+```
+> mvn package
+```
  run MainApplicationClass and flyway will automatically run
  verify running at http://localhost:8080/Widget/1
 
