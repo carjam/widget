@@ -25,7 +25,8 @@ Build:
  ```
  > mvn spring-boot:run
  ```
- verify running at http://localhost:8080/Widget/1
+ verify running at http://localhost:8081/Widget/1
+ (or whatever port you've specified in the application.properties file)
 
  to manually run flyway:
    from /widget directory > mvn compile flyway:migrate
