@@ -20,7 +20,10 @@ Build:
 ```
 > mvn package
 ```
- run MainApplicationClass and flyway will automatically run
+ run MainApplicationClass and flyway will automatically run:
+ ```
+ > mvn exec:java -Dexec.mainClass=com.companyx.widget.MainApplicationClass
+ ```
  verify running at http://localhost:8080/Widget/1
 
  to manually run flyway:
