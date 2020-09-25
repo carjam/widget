@@ -3,7 +3,8 @@ networks:
     spring-boot-network: null
 services: 
     widget-db:
-        image: mysql:5.7.26
+        image: mysql:8.0
+        restart: always
         environment:
             MYSQL_ROOT_PASSWORD: root1234
             MYSQL_USER: carjam
@@ -12,6 +13,8 @@ services:
             MYSQL_DATABASE: widget
         ports: 
             - "3306:3306"
+        expose:
+            - "3306"
         volumes:
             #Mapping mysql folder to a volume
             - widget-db:/var/lib/mysql:delegated
@@ -21,6 +24,7 @@ services:
                 aliases: 
                 - widget-db.dev
     app:
+        restart: on-failure:3 
         build:
             context: .
             dockerfile: Dockerfile
