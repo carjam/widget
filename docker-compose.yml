@@ -1,0 +1,55 @@
+version: '3'
+networks:
+    spring-boot-network: null
+services: 
+    widget-db:
+        image: mysql:5.7.26
+        environment:
+            MYSQL_ROOT_PASSWORD: root1234
+            MYSQL_USER: carjam
+            MYSQL_PASSWORD: password
+            MYSQL_ALLOW_EMPTY_PASSWORD: 1
+            MYSQL_DATABASE: widget
+        ports: 
+            - "3306:3306"
+        volumes:
+            #Mapping mysql folder to a volume
+            - widget-db:/var/lib/mysql:delegated
+        container_name: dev-widget-mysqldb
+        networks: 
+            spring-boot-network:
+                aliases: 
+                - widget-db.dev
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports: 
+            - '8081:8081'
+            - '8000:8000'
+        #volumes:
+        #    - ../.:/opt/project:delegated
+        #    - mavencache:/root/.m2
+        networks:
+            spring-boot-network:
+                aliases: 
+                    - app.dev
+        depends_on: 
+            - widget-db
+        environment: 
+            #MAVEN_OPTS: -Xmx1024m
+            DATABASE_HOST: widget-db
+            DATABASE_USER: carjam
+            DATABASE_PASSWORD: password
+            DATABASE_NAME: widget
+            DATABASE_PORT: 3306
+            SPRING_PROFILES_ACTIVE: dev
+            LOB_LEVEL: INFO
+        #working_dir: /opt/project
+        command: 'mvn spring-boot:run'
+    
+volumes:
+    widget-db: null
+    mavencache: null
+
+        
