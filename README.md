@@ -9,6 +9,7 @@ mysql -u root
  > GRANT ALL PRIVILEGES ON *.* TO 'carjam'@'localhost';
  > FLUSH PRIVILEGES;
  > CREATE DATABASE widget;
+ > USE widget;
  > GRANT ALL ON widget TO carjam@localhost ;
  > GRANT ALL PRIVILEGES ON `widget`.* TO 'carjam'@'localhost';
  > ALTER USER 'carjam'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
