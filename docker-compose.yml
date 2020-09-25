@@ -48,7 +48,7 @@ services:
             DATABASE_NAME: widget
             DATABASE_PORT: 3306
             SPRING_PROFILES_ACTIVE: dev
-            LOB_LEVEL: INFO
+            LOG_LEVEL: INFO
         #working_dir: /opt/project
         command: 'mvn spring-boot:run'
     

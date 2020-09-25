@@ -31,3 +31,14 @@ Build:
 
  to manually run flyway:
    from /widget directory > mvn compile flyway:migrate
+
+For docker, first follow instructions here:
+  https://spring.io/guides/gs/spring-boot-docker/
+```
+From widget directory:
+> mkdir -p target/dependency
+> cd target/dependency
+> jar -xf ../*.jar
+> docker build -t springio/gs-spring-boot-docker .
+> docker run -p 8080:8080 springio/gs-spring-boot-docker
+```
