@@ -108,7 +108,6 @@
                     </schemas>
                     <locations>
                         <location>classpath:db.migration</location>
-                        <!--<location>filesystem:/Users/jamescarson/workspace/widget/src/main/resources/db.migration</location>-->
                     </locations>
                     <sqlMigrationPrefix>V</sqlMigrationPrefix>
                     <repeatableSqlMigrationPrefix>RRR</repeatableSqlMigrationPrefix>

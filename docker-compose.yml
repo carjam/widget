@@ -11,14 +11,14 @@ services:
             MYSQL_PASSWORD: password
             MYSQL_ALLOW_EMPTY_PASSWORD: 1
             MYSQL_DATABASE: widget
-        ports: 
-            - "3306:3306"
+        ports: #local machine: container
+            - "60330:3306"
         expose:
             - "3306"
+            - "60330"
         volumes:
             #Mapping mysql folder to a volume
             - widget-db:/var/lib/mysql:delegated
-        container_name: dev-widget-mysqldb
         networks: 
             spring-boot-network:
                 aliases: 
@@ -29,11 +29,12 @@ services:
             context: .
             dockerfile: Dockerfile
         ports: 
-            - '8081:8081'
-            - '8000:8000'
-        #volumes:
-        #    - ../.:/opt/project:delegated
-        #    - mavencache:/root/.m2
+            - '8080:8080'
+        expose:
+          - "8080" 
+        volumes:
+          - ../.:/opt/project:delegated
+          - mavencache:/root/.m2
         networks:
             spring-boot-network:
                 aliases: 
@@ -41,7 +42,7 @@ services:
         depends_on: 
             - widget-db
         environment: 
-            #MAVEN_OPTS: -Xmx1024m
+            MAVEN_OPTS: -Xmx1024m
             DATABASE_HOST: widget-db
             DATABASE_USER: carjam
             DATABASE_PASSWORD: password
@@ -55,5 +56,3 @@ services:
 volumes:
     widget-db: null
     mavencache: null
-
-        
