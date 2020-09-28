@@ -5,12 +5,8 @@ services:
     widget-db:
         image: mysql:8.0
         restart: always
-        environment:
-            MYSQL_ROOT_PASSWORD: root1234
-            MYSQL_USER: carjam
-            MYSQL_PASSWORD: password
-            MYSQL_ALLOW_EMPTY_PASSWORD: 1
-            MYSQL_DATABASE: widget
+        env_file:
+          - .env
         ports: #local machine: container
             - "60330:3306"
         expose:
@@ -42,15 +38,8 @@ services:
                     - app.dev
         depends_on: 
             - widget-db
-        environment: 
-            MAVEN_OPTS: -Xmx1024m
-            DATABASE_HOST: widget-db
-            DATABASE_USER: carjam
-            DATABASE_PASSWORD: password
-            DATABASE_NAME: widget
-            DATABASE_PORT: 3306
-            SPRING_PROFILES_ACTIVE: dev
-            LOG_LEVEL: INFO
+        env_file:
+          - .env
         #working_dir: /opt/project
         command: 'mvn spring-boot:run'
     
