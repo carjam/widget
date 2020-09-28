@@ -32,6 +32,25 @@ Build:
  to manually run flyway:
    from /widget directory > mvn compile flyway:migrate
 
+Create .env and add your environment values like:
+```
+MYSQL_ROOT_PASSWORD=root1234
+MYSQL_USER=carjam
+MYSQL_PASSWORD=password
+MYSQL_ALLOW_EMPTY_PASSWORD=1
+MYSQL_DATABASE=widget
+
+MAVEN_OPTS=-Xmx1024m
+DATABASE_HOST=widget-db
+DATABASE_USER=carjam
+DATABASE_PASSWORD=password
+DATABASE_NAME=widget
+DATABASE_PORT=3306
+SPRING_PROFILES_ACTIVE=dev
+LOG_LEVEL=INFO
+```
+
+
 To setup docker, first follow instructions here:
   https://spring.io/guides/gs/spring-boot-docker/
 ```

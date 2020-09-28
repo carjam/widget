@@ -100,7 +100,7 @@
                 <version>5.1.4</version>
                 <configuration>
                     <driver>com.mysql.jdbc.Driver</driver>
-                    <url>jdbc:mysql://localhost:3306/widget</url>
+                    <url>jdbc:mysql://widget-db:3306/widget</url>
                     <user>carjam</user>
                     <password>password</password>
                     <schemas>

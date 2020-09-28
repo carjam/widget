@@ -1,5 +1,7 @@
 target/
+.idea/
 
+.env
 *.class
 
 # Log file
