@@ -19,6 +19,7 @@ services:
         volumes:
             #Mapping mysql folder to a volume
             - widget-db:/var/lib/mysql:delegated
+            - ./src/main/resources/db/initialize_db.sql:/docker-entrypoint-initdb.d/0_init.sql
         networks: 
             spring-boot-network:
                 aliases: 
